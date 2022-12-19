@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mysql:
+    platform: linux/amd64
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 3366:3306
+    environment:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_USERNAME: test-dev
+      DB_PASSWORD: SuperCoolPassword123
+      MYSQL_ROOT_PASSWORD: UltraDopeRootPassword!3
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./infra-scripts/local-db-provision.sql:/docker-entrypoint-initdb.d/1.sql
+volumes:
+  db-data:
