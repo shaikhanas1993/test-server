@@ -6,11 +6,11 @@ import { join } from 'path';
 import { DataSourceOptions } from 'typeorm';
 
 export const typeOrmModuleOptions: TypeOrmModuleOptions = {
-  type: 'mysql',
+  type: 'mongodb',
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT),
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  // username: process.env.DB_USER,
+  // password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [join(__dirname, '**', '*.entity.{ts,js}')],
   /* Note : it is unsafe to use synchronize: true for schema synchronization

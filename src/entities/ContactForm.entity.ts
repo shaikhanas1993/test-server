@@ -1,10 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, ObjectID } from 'typeorm';
 import { IsEmail, IsNotEmpty, MaxLength } from 'class-validator';
 
 @Entity('contact_form_table')
 export class ContactForm {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @ObjectIdColumn()
+  id: ObjectID;
 
   @Column()
   @IsNotEmpty()

@@ -33,6 +33,7 @@
     "class-validator": "^0.14.0",
     "dotenv": "^16.0.3",
     "mailtrap": "^3.0.1",
+    "mongodb": "^4.13.0",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
