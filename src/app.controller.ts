@@ -1,5 +1,6 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ContactFormDataDto } from './dto/ContactFormDataDto';
 
 @Controller()
 export class AppController {
@@ -11,7 +12,8 @@ export class AppController {
   }
 
   @Post()
-  postFormData() {
+  postFormData(@Body() contactFormDto: ContactFormDataDto) {
+    console.log(contactFormDto);
     return this.appService.postFormData();
   }
 }
