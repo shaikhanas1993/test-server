@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmail, IsNotEmpty, MaxLength } from 'class-validator';
 
-@Entity()
+@Entity('contact_form_table')
 export class ContactForm {
   @PrimaryGeneratedColumn()
   id: number;

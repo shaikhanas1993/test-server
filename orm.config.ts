@@ -32,5 +32,5 @@ export function getConfig() {
   return OrmConfig as DataSourceOptions;
 }
 
-console.log(OrmConfig);
+// console.log(OrmConfig);
 export default OrmConfig;

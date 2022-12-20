@@ -11,9 +11,9 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post()
+  @Post('/post-form')
   postFormData(@Body() contactFormDto: ContactFormDataDto) {
     console.log(contactFormDto);
-    return this.appService.postFormData();
+    return this.appService.postFormData(contactFormDto);
   }
 }

@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import ormconfig from 'orm.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ContactForm } from './entities/ContactForm.entity';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AppService } from './app.service';
         ...ormconfig,
       }),
     }),
+    TypeOrmModule.forFeature([ContactForm]),
   ],
   controllers: [AppController],
   providers: [AppService],
