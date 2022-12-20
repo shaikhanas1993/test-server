@@ -8,15 +8,18 @@ export class ContactForm {
 
   @Column()
   @IsNotEmpty()
+  @MaxLength(25)
   firstName: string;
 
   @Column()
   @IsNotEmpty()
+  @MaxLength(25)
   lastName: string;
 
   @Column()
   @IsNotEmpty()
   @IsEmail()
+  @MaxLength(50)
   email: string;
 
   @Column({ type: 'text' })
