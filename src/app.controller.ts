@@ -1,8 +1,7 @@
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { ContactFormDataDto } from './dto/ContactFormDataDto';
-import { Response } from 'express';
 
 @Controller()
 export class AppController {
@@ -19,13 +18,8 @@ export class AppController {
     description: 'The record has been successfully created.',
   })
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
-  async postFormData(
-    @Body() contactFormDto: ContactFormDataDto,
-    @Res() response: Response,
-  ) {
-    const req = await this.appService.postFormData(contactFormDto);
-    return response
-      .status(req.code == '201' ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST)
-      .send(req.code == '201' ? 'success' : 'internal server error');
+  @HttpCode(201)
+  async postFormData(@Body() contactFormDto: ContactFormDataDto) {
+    return await this.appService.postFormData(contactFormDto);
   }
 }

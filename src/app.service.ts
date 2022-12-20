@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ContactFormDataDto } from './dto/ContactFormDataDto';
 import { ContactForm } from './entities/ContactForm.entity';
@@ -21,10 +21,10 @@ export class AppService {
     try {
       await this.contactFormRepository.save(data);
       await this.mailTrapService.sendEmail(data.email);
-      return { code: '201' };
+      return 'record inserted in DB';
     } catch (e) {
       console.error(e);
-      return { code: '500' };
+      throw new InternalServerErrorException();
     }
   }
 }
