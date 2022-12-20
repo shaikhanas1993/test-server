@@ -13,7 +13,6 @@ export class AppController {
 
   @Post('/post-form')
   postFormData(@Body() contactFormDto: ContactFormDataDto) {
-    console.log(contactFormDto);
     return this.appService.postFormData(contactFormDto);
   }
 }

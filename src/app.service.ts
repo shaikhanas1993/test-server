@@ -16,6 +16,10 @@ export class AppService {
   }
 
   async postFormData(data: ContactFormDataDto) {
-    return await this.contactFormRepository.save(data);
+    try {
+      await this.contactFormRepository.save(data);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
