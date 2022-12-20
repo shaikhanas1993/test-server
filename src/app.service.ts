@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ContactFormDataDto } from './dto/ContactFormDataDto';
 import { ContactForm } from './entities/ContactForm.entity';
+import { MailTrapService } from './mailTrap';
 import { ContactFromRepository } from './respositories/ContactForm.repository';
 
 @Injectable()
@@ -9,6 +10,7 @@ export class AppService {
   constructor(
     @InjectRepository(ContactForm)
     private contactFormRepository: ContactFromRepository,
+    private mailTrapService: MailTrapService,
   ) {}
 
   getHello(): string {
@@ -18,8 +20,11 @@ export class AppService {
   async postFormData(data: ContactFormDataDto) {
     try {
       await this.contactFormRepository.save(data);
+      await this.mailTrapService.sendEmail(data.email);
+      return { code: '201' };
     } catch (e) {
       console.error(e);
+      return { code: '500' };
     }
   }
 }

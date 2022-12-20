@@ -5,6 +5,7 @@ import ormconfig from 'orm.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ContactForm } from './entities/ContactForm.entity';
+import { MailTrapService } from './mailTrap';
 
 @Module({
   imports: [
@@ -19,6 +20,6 @@ import { ContactForm } from './entities/ContactForm.entity';
     TypeOrmModule.forFeature([ContactForm]),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, MailTrapService],
 })
 export class AppModule {}
